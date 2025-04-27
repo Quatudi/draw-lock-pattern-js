@@ -47,7 +47,7 @@ function setPoints(sequence) {
 }
 
 function setPathStyle(path) {
-    path.setAttribute("stroke","url(#grad1)");
+    path.setAttribute("stroke","red");
     path.setAttribute("stroke-width","5");
     path.setAttribute("stroke-linecap","square");
     path.setAttribute("stroke-linejoin","round");
