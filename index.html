@@ -4,25 +4,122 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
-    <title>Document</title>
+    <title>draw-lock-pattern</title>
 </head>
 <body>
     <div class="pattern-container">
+        <button>Dark mode</button>
         <svg id="figureSvg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
-            <defs>
+            <defs class="permanent">
                 <marker
-                    id="start"
-                    viewBox="0 0 10 10"
-                    refX="1"
+                    id="arrowMarker"
+                    viewBox="0 0 1.5 1.5"
+                    refX="2"
                     refY="2"
-                    markerWidth="5"
-                    markerHeight="5"
-                    orient="auto">
-                    <path d="M 0 2 L 0 3 L 3 3 L 3 4 L 5 2 L 3 0 L 3 1 L 0 1 Z" />
+                    overflow="visible"
+                    orient="auto"
+                    markerUnits="userSpaceOnUse">
+                    <path
+                        d="M0 1H5V0L7 2 5 4V3H0Z"
+                        fill="black"
+                        stroke="black"/>
+                </marker>
+                <marker
+                    id="crossMarker"
+                    viewBox="0 0 4 4"
+                    refX="9"
+                    refY="9"
+                    overflow="visible"
+                    orient="auto"
+                    markerUnits="userSpaceOnUse">
+                    <path
+                        d="M0 3 3 0 7 4C9 6 9 6 11 4L15 0 18 3 14 7C12 9 12 9 14 11L18 15 15 18 11 14C9 12 9 12 7 14L3 18 0 15 4 11C6 9 6 9 4 7Z"
+                        fill="black"
+                        stroke="black"/>
                 </marker>
             </defs>
-            <rect width="100" height="100" fill="white" stroke="black"/>
+            <rect class="permanent" width="100" height="100" fill="white" stroke="black"/>
         </svg>
+        <form onkeydown="if(event.keyCode === 13) {return false;}">
+            <fieldset>
+                <legend>sequence</legend>
+                <div class="container">
+                    <input 
+                        type="text"
+                        id="sequence"
+                        name="sequence"
+                        maxlength="9"
+                        size="7"
+                        placeholder="ex: 1234"
+                        autocomplete="false"
+                        autofocus/>
+                    <div id="errorMessage"></div>
+                </div>
+            </fieldset>
+            <fieldset>
+                <legend>markers</legend>
+                <input
+                    type="checkbox"
+                    id="arrow"
+                    name="arrow"
+                    checked>
+                <label for="arrow">🠲</label>
+                <input
+                    type="checkbox"
+                    id="cross"
+                    name="cross">
+                <label for="cross">🞮</label>
+                <input
+                    type="checkbox"
+                    id="numbers"
+                    name="numbers">
+                <label for="numbers">➀➁➂</label><br>
+                <fieldset id="numbersOptions">
+                    <legend>➀➁➂ options</legend>
+                    <input
+                        type="radio"
+                        id="strokeOrder"
+                        name="numbersOption"
+                        value="strokeOrder"
+                        checked>
+                    <label for="strokeOrder">stroke order</label><br>
+                    <input
+                        type="radio"
+                        id="keypadLayout"
+                        name="numbersOption"
+                        value="keypadLayout">
+                    <label for="keypadLayout">keypad layout</label>
+                    <span id="fullKeypadLayoutOption">
+                        <input
+                            type="checkbox"
+                            id="fullKeypadLayout"
+                            name="fullKeypadLayout"
+                            checked>
+                        <label for="fullKeypadLayout">full</label>
+                    </span>
+                </fieldset>
+            </fieldset>
+            <fieldset>
+                <legend>line</legend>
+                <div class="fieldset">
+                    <div class="fieldsetElement">
+                        <input
+                            type="checkbox"
+                            id="outline"
+                            name="outline">
+                        <label for="outline">outline</label>
+                    </div>
+                    <div class="fieldsetElement">
+                        <input
+                            type="color"
+                            id="colorLine"
+                            name="colorLine"
+                            value="#ff0000">
+                        <label for="colorLine">color</label>
+                    </div>
+                </div>
+            </fieldset>
+        </form>
         <a href='' download="test.svg" id='downloadLink'>download .SVG</a>
     </div>
     <script src="script.js"></script>

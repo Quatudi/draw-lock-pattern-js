@@ -1,16 +1,40 @@
+:root {
+    --background-color: #2c2c2c;
+    --text-color: #d3d3d3;
+}
+
 body {
     display: flex;
     justify-content: center;
-    align-items: center;
-    height: 100vh;
+    background-color: var(--background-color);
+    color: var(--text-color);
 }
 
 .pattern-container {
-    width: 250px;
-    height: 250px;
+    width: 300px;
+    height: auto;
 }
 
-#downloadLink {
+.container {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+}
+
+#errorMessage {
+    color: red;
+    font-style: italic;
+}
+
+p {
+    margin: 0;
+}
+
+button {
+    width: 50%;
+}
+
+#downloadLink, button {
     display:block;
     background:lightgrey;
     border-radius: 5px;
@@ -23,15 +47,50 @@ body {
     font-size:1em;
     text-align:center;
     padding: 5px 10px;
-    margin-top: 10px;
+    margin: 10px auto;
 }
 
-#downloadLink:hover {
+#downloadLink:hover, button:hover {
     background:grey;
     border-color: lightgrey;
 }
 
-#downloadLink:active {
+#downloadLink:active, button:active {
     background:lightgrey;
     border-color: grey;
+}
+
+:invalid {
+    border-color: red;
+}
+
+#numbersOptions {
+    display: none;
+}
+
+#numbers:checked ~ #numbersOptions {
+    display: block;
+}
+
+fieldset #strokeOrder:checked ~ #fullKeypadLayoutOption {
+    visibility: hidden;
+    pointer-events: none;
+    color: #c2c2c2;
+}
+
+.fieldset {
+    display: flex;
+    align-items: center;
+}
+
+.fieldsetElement {
+    flex: 1;
+}
+
+line, text, circle, rect {
+    pointer-events: none;
+}
+
+circle.permanent {
+    pointer-events: auto;
 }
