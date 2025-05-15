@@ -96,7 +96,7 @@ function printPotentialErrorMessages(sequence) {
     const input = document.querySelector("#sequence");
     for (let n=0; n<sequence.length; n++) {
         if (!('123456789'.includes(sequence[n]))) {
-            appendErrorMessage(`> ${sequence[n]}: invalid caracter`);
+            appendErrorMessage(`> ${sequence[n]}: invalid character`);
         } else if (sequence.slice(0,n).includes(sequence[n])) {
             appendErrorMessage(`> ${sequence[n]}: invalid repetition`);
         }
